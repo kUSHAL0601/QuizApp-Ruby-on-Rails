@@ -1,0 +1,27 @@
+<div>
+	<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert]%></p>
+	<% end %>
+	<%= form_tag do %>
+	<fieldset>
+		<legend>Please Log In</legend>
+		<table class="login_form">
+			<tr>
+				<td><%= label_tag :name,"Name"%></td>
+				<td class="input_field"><%= text_field_tag :name, params[:name]%></td>
+			</tr>
+			<tr>
+				<td><%= label_tag :password,"Password"%></td>
+				<td class="input_field"><%= text_field_tag :password, params[:password]%></td>
+			</tr>
+		</table>
+		<div id="login_button"	>
+			<%= submit_tag :"Login"%>
+		</div>
+		<div>
+		<br>
+			<%= link_to 'Register Now', "users/new" %>
+		</div>
+	</fieldset> 
+	<% end %>
+</div>

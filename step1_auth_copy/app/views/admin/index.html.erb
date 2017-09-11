@@ -1,0 +1,15 @@
+<div>
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert]%></p>
+<% end %>
+</div>
+<h1>
+Welcome&nbsp;
+<%= session[:user_name] %>
+</h1>
+<% if session[:user_name] == ("Admin") %>
+<h1>Role: Admin</h1>
+<% else %>
+<h1>Role: User</h1>
+<% end %>
+<%= link_to "Logout", sessions_destroy_path %>
