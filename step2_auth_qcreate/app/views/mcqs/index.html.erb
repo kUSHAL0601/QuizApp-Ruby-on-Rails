@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mcqs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Opta</th>
+      <th>Optb</th>
+      <th>Optc</th>
+      <th>Optd</th>
+      <th>Corropt</th>
+      <th>Subgen</th>
+      <th>Gen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mcqs.each do |mcq| %>
+      <tr>
+        <td><%= mcq.question %></td>
+        <td><%= mcq.optA %></td>
+        <td><%= mcq.optB %></td>
+        <td><%= mcq.optC %></td>
+        <td><%= mcq.optD %></td>
+        <td><%= mcq.corrOpt %></td>
+        <td><%= mcq.subgen %></td>
+        <td><%= mcq.gen %></td>
+        <td><%= link_to 'Show', mcq %></td>
+        <td><%= link_to 'Edit', edit_mcq_path(mcq) %></td>
+        <td><%= link_to 'Destroy', mcq, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mcq', new_mcq_path %>

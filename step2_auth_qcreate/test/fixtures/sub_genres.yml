@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subgen: MyString
+  gen: MyString
+
+two:
+  subgen: MyString
+  gen: MyString
