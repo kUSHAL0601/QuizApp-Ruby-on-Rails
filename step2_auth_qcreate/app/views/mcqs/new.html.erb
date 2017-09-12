@@ -1,3 +1,9 @@
+<div>
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert]%></p>
+<% end %>
+</div>
+
 <h1>New Mcq</h1>
 
 <%= render 'form', mcq: @mcq %>

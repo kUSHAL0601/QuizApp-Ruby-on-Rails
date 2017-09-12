@@ -24,16 +24,19 @@ class McqsController < ApplicationController
   # POST /mcqs
   # POST /mcqs.json
   def create
-#    if (params[:mcq][:question] == "") or (params[:mcq][:optA] == "") or (params[:mcq][:optB] == "") or(params[:mcq][:optC] == "") or(params[:mcq][:optD] == "") or(params[:mcq][:subgen] == "") 
-    @mcq = Mcq.new(mcq_params)
+    if (params[:mcq][:question] == "") or (params[:mcq][:optA] == "") or (params[:mcq][:optB] == "") or(params[:mcq][:optC] == "") or(params[:mcq][:optD] == "") or(params[:mcq][:subgen] == "")
+      redirect_to new_mcq_path,alert:"All fields are necessary!"
+    else
+      @mcq = Mcq.new(mcq_params)
 
-    respond_to do |format|
-      if @mcq.save
-        format.html { redirect_to @mcq, notice: 'Mcq was successfully created.' }
-        format.json { render :show, status: :created, location: @mcq }
-      else
-        format.html { render :new }
-        format.json { render json: @mcq.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @mcq.save
+          format.html { redirect_to mcqs_path, notice: 'Mcq was successfully created.' }
+          format.json { render :show, status: :created, location: @mcq }
+        else
+          format.html { render :new }
+          format.json { render json: @mcq.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
