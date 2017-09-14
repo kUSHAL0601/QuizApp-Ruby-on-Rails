@@ -1,0 +1,84 @@
+<form action="/gen_sub_gen/create" method="get" id="form1" style="display:none">
+<input type="text" name="gennm" id="gennm"></input>
+</form>
+<%= form_with(model: mcq, local: true) do |form| %>
+  <% if mcq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mcq.errors.count, "error") %> prohibited this mcq from being saved:</h2>
+
+      <ul>
+      <% mcq.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" id="Genre">
+    <%= form.label :gen %>
+   <select name="gen" id="gen" onchange="foo()">
+    <% $genres.each do |genre| %>
+      <% if genre.name == $top_gen %>
+        <option value=<%= genre.name %> selected="selected"><%= genre.name %></option>
+      <% else %>
+        <option value=<%= genre.name %>><%= genre.name %></option>
+      <% end %>
+    <% end %>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= form.label :subgen %>
+   <select name="subgen">
+    <% $show_subgen.each do |sub_genre| %>
+      <option value=<%= sub_genre.subgen %>><%= sub_genre.subgen %></option>
+    <% end %>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_field :question, id: :mcq_question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :optA %>
+    <%= form.text_field :optA, id: :mcq_optA %>
+  </div>
+
+  <div class="field">
+    <%= form.label :optB %>
+    <%= form.text_field :optB, id: :mcq_optB %>
+  </div>
+
+  <div class="field">
+    <%= form.label :optC %>
+    <%= form.text_field :optC, id: :mcq_optC %>
+  </div>
+
+  <div class="field">
+    <%= form.label :optD %>
+    <%= form.text_field :optD, id: :mcq_optD %>
+  </div>
+
+  <div class="field">
+    <%= form.label :corrOpt %>
+    <select name="corropt">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+      <option>D</option>
+    </select>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  function foo(){
+    var e=document.getElementById('gen');
+    document.getElementById('gennm').value=e.options[e.selectedIndex].value;
+    document.getElementById('form1').submit();
+  }
+</script>

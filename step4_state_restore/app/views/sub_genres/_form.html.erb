@@ -1,0 +1,31 @@
+<%= form_with(model: sub_genre, local: true) do |form| %>
+  <% if sub_genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sub_genre.errors.count, "error") %> prohibited this sub_genre from being saved:</h2>
+
+      <ul>
+      <% sub_genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subgen %>
+    <%= form.text_field :subgen, id: :sub_genre_subgen %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gen %>
+    <select name="gen">
+    <% $genres.each do |genre| %>
+      <option value=<%= genre.name %>><%= genre.name %></option>
+    <% end %>
+    </select>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

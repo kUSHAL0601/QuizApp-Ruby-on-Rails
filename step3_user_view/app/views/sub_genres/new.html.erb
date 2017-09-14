@@ -1,0 +1,10 @@
+<div>
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert]%></p>
+<% end %>
+</div>
+<h1>New Sub Genre</h1>
+
+<%= render 'form', sub_genre: @sub_genre %>
+
+<%= link_to 'Back', admin_url %>

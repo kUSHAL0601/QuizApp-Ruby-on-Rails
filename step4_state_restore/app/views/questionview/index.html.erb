@@ -1,0 +1,45 @@
+<!-- <h1>Questions</h1>
+ --><!-- <h1><%= $cur_gen %></h1>
+<h1><%= $cur_subgen %></h1>
+<h1><%= $cur_qid %></h1>
+ -->
+<% if $cur_qid=="NQ" %>
+<h1>Questions coming soon</h1>
+<br>
+<br>
+<%= link_to "Back to Home", userpg_index_path %>
+<%else%>
+<div>
+<% if $truth==1 and $chng==1 %>
+<p style="font-size:18;color:green">Correct</p>
+<% end %>
+<% if $truth==0 and $chng==1 %>
+<p style="font-size:18;color:red">Incorrect</p>
+<% end %>
+</div>
+<% if $cur_qid=="END" %>
+<h1>You completed all the questions</h1>
+<h1>Final score <%= $score %></h1>
+<br>
+<br>
+<%= link_to "Back to Home", userpg_index_path %>
+<% else %>
+<% $chng=0 %>
+<h1>Score:<%= $score %></h1>
+<h1>Question: <%= $ques %></h1>
+<br>
+<h1>Options:</h1>
+<br>
+<br>
+<form action="/questionview/next" method="get" id="ans">
+<input type="radio" name="sel_opt" value="A"><span style="font-size:18px"><%=$a%></span><br><br>
+<input type="radio" name="sel_opt" value="B"><span style="font-size:18px"><%=$b%></span><br><br>
+<input type="radio" name="sel_opt" value="C"><span style="font-size:18px"><%=$c%></span><br><br>
+<input type="radio" name="sel_opt" value="D"><span style="font-size:18px"><%=$d%></span><br><br>
+<input type="hidden" name="gen" value=<%=$cur_gen%> />
+<input type="hidden" name="subgen" value=<%=$cur_subgen%> />
+<br>
+<button type="submit" onclick="this.form.submit()">SUBMIT</button>
+</form>
+<%end%>
+<%end %>
