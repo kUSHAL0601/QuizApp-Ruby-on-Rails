@@ -1,0 +1,39 @@
+<div>
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert]%></p>
+<% end %>
+</div>
+<h1>
+Welcome&nbsp;
+<%= session[:user_name] %>
+</h1>
+<% if session[:user_name] == ("Admin") %>
+<h1>Role: Admin</h1>
+<% else %>
+<h1>Role: User</h1>
+<% end %>
+<%= link_to "Logout", sessions_destroy_path %>
+<br>
+<br>
+<h2>Genres Manipulation</h2>
+<%= link_to "New Genre", new_genre_path %>
+<br>
+<br>
+<%= link_to "View Genres", genres_path %>
+<br>
+<br>
+<h2>Sub-genres Manipulation</h2>
+<%= link_to "New Sub-Genre", new_sub_genre_path %>
+<br>
+<br>
+<%= link_to "View Sub-genres", sub_genres_path %>
+<br>
+<br>
+<h2>Questions Manipulation</h2>
+<%= link_to "New Question", new_mcq_path %>
+<br>
+<br>
+<%= link_to "View Questions", mcqs_path %>
+<br>
+<br>
+<%=link_to "Leaderboard",leaderboard_index_path %>

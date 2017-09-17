@@ -1,0 +1,65 @@
+<% $chng=0 %>
+<h1>Welcome <%= session[:user_name] %></h1>
+<%= link_to "Logout", sessions_destroy_path %>
+<br>
+<br>
+<form action="/genquiz/create" method="get" id="form1" style="display:none">
+<input type="text" name="gennm" id="gennm"></input>
+</form>
+<form action="/questionview/index" method="get">
+  <div class="field" id="Quiz">
+  <label>Genre</label>
+   <select name="gen" id="gen" onchange="foo()">
+    <% $genres.each do |genre| %>
+      <% if genre.name == $quiz_top_gen %>
+        <option value=<%= genre.name %> selected="selected"><%= genre.name %></option>
+      <% else %>
+        <option value=<%= genre.name %>><%= genre.name %></option>
+      <% end %>
+    <% end %>
+    </select>
+  </div>
+
+  <div class="field">
+  <label>SubGenre</label>
+   <select name="subgen">
+    <% $quiz_show_subgen.each do |sub_genre| %>
+      <option value=<%= sub_genre.subgen %>><%= sub_genre.subgen %></option>
+    <% end %>
+    </select>
+  </div>
+  <button type="Submit" onclick="this.form.submit()">Play</button>
+</form>
+<br>
+<br>
+<h1>Progress</h1>
+<table border="all">
+<tr>
+  <th>Genre</th>
+  <th>Subgenre</th>
+  <th>Score</th>
+  <th>Status</th>
+  </tr>
+<% @abc.each do |abc| %>
+<tr>
+<td><%=abc.genre%></td>
+<td><%=abc.subgenre%></td>
+<td><%=abc.score%></td>
+<%if abc.qsnid==="END"%>
+<td>Completed</td>
+<%else%>
+<td>Incomplete</td>
+<%end%>
+</tr>
+<% end %>
+</table>
+<script type="text/javascript">
+  function foo(){
+    var e=document.getElementById('gen');
+    document.getElementById('gennm').value=e.options[e.selectedIndex].value;
+    document.getElementById('form1').submit();
+  }
+</script>
+<br>
+<br>
+<%=link_to "Leaderboard",leaderboard_index_path %>
