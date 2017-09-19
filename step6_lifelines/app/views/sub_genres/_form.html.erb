@@ -1,0 +1,48 @@
+<style type="text/css">
+  #rb {
+    border-radius: 15px 50px;
+    background: green;
+    padding: 10px;
+    color: white;
+    border:none;
+} 
+</style>
+
+<%= form_with(model: sub_genre, local: true) do |form| %>
+  <% if sub_genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sub_genre.errors.count, "error") %> prohibited this sub_genre from being saved:</h2>
+
+      <ul>
+      <% sub_genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<center>
+  <div class="field">
+    <%= form.label :subgen, style:"font-size:25px;color:green;"%>
+    <br>
+    <%= form.text_field :subgen, id: :sub_genre_subgen %>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= form.label :gen,style:"font-size:25px;color:green;" %>
+    <br>
+    <select name="gen">
+    <%if $genres!=nil%>
+    <% $genres.each do |genre| %>
+      <option value=<%= genre.name %>><%= genre.name %></option>
+    <% end %>
+    <%end%>
+    </select>
+  </div>
+<br>
+<br>
+  <div class="actions">
+    <button type="submit" id="rb" onclick="this.form.submit()" style="font-size:20px;">CREATE</button>
+  </div>
+  </center>
+<% end %>
