@@ -1,3 +1,13 @@
+<style type="text/css">
+  #rb {
+    border-radius: 15px 50px;
+    background: green;
+    padding: 10px;
+    color: white;
+    border:none;
+} 
+</style>
+
 <%= form_with(model: sub_genre, local: true) do |form| %>
   <% if sub_genre.errors.any? %>
     <div id="error_explanation">
@@ -10,22 +20,27 @@
       </ul>
     </div>
   <% end %>
-
+<center>
   <div class="field">
-    <%= form.label :subgen %>
+    <%= form.label :subgen, style:"font-size:25px;color:green;"%>
+    <br>
     <%= form.text_field :subgen, id: :sub_genre_subgen %>
   </div>
 
   <div class="field">
-    <%= form.label :gen %>
+    <br>
+    <%= form.label :gen,style:"font-size:25px;color:green;" %>
+    <br>
     <select name="gen">
     <% $genres.each do |genre| %>
       <option value=<%= genre.name %>><%= genre.name %></option>
     <% end %>
     </select>
   </div>
-
+<br>
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" id="rb" onclick="this.form.submit()" style="font-size:20px;">CREATE</button>
   </div>
+  </center>
 <% end %>

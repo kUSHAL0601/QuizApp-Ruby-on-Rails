@@ -1,27 +1,40 @@
-<div>
-	<% if flash[:alert] %>
-	<p id="notice"><%= flash[:alert]%></p>
+<html>
+<title>Login Page</title>
+<style type="text/css">
+	#rb {
+    border-radius: 15px 50px;
+    background: green;
+    padding: 10px;
+    color: white;
+    border:none;
+} 
+</style>
+	<% if flash[:alert]==="Succesfully logged out" %>
+	<p style="color:green"><%= flash[:alert]%></p>
+	<% else %>
+	<p style="color:red"><%= flash[:alert]%></p>
 	<% end %>
+	<h1 style="color:green;font-size:30px;"><center>Login Here</center></h1><br><br><br>
 	<%= form_tag do %>
-	<fieldset>
-		<legend>Please Log In</legend>
-		<table class="login_form">
+		<table class="login_form" style="margin:auto;">
 			<tr>
-				<td><%= label_tag :name,"Name"%></td>
+				<td style="color:green;font-size:25px;"><%= label_tag :name,"Name: "%></td>
 				<td class="input_field"><%= text_field_tag :name, params[:name]%></td>
 			</tr>
 			<tr>
-				<td><%= label_tag :password,"Password"%></td>
+				<td style="color:green;font-size:25px;"><%= label_tag :password,"Password: "%></td>
 				<td class="input_field"><%= password_field_tag :password, params[:password]%></td>
 			</tr>
 		</table>
-		<div id="login_button"	>
-			<%= submit_tag :"Login"%>
-		</div>
-		<div>
 		<br>
-			<%= link_to 'Register Now', "users/new" %>
+		<br>
+		<center>
+		<button type="submit" id="rb" onclick="this.form.submit()" style="font-size:20px;">LOGIN</button>
+		<div style="color:green;font-size:20px;">
+		<br>
+		<br>
+			<%= link_to 'Register Now', "users/new",style: "color:green;text-decoration:none;background-color:white;" %>
 		</div>
-	</fieldset> 
+		</center>
 	<% end %>
-</div>
+</html>

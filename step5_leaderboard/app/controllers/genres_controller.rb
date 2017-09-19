@@ -60,6 +60,9 @@ class GenresController < ApplicationController
   # DELETE /genres/1
   # DELETE /genres/1.json
   def destroy
+    SubGenre.where(gen: @genre.name).destroy_all();
+    Mcq.where(gen: @genre.name).destroy_all();
+
     @genre.destroy
     respond_to do |format|
       format.html { redirect_to genres_url, notice: 'Genre was successfully destroyed.' }

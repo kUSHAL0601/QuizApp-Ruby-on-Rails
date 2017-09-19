@@ -110,7 +110,7 @@ end
 		#print ques.id
 		#print $prev_id
 		#print "\n\n"
-		if $once==1
+		if $once==1 and ques.gen===$cur_gen and ques.subgen===$cur_subgen
 			#print "\n\nMatched\n\n"
 			$cur_qid=ques.id
 		  	$ques=ques.question
@@ -140,6 +140,9 @@ end
   end
 
   def prev
+  	print params;
+  	State.where("userid" => session[:user_id],"genre" => params["gnm"],"subgenre" => params["snm"]).destroy_all;
+	redirect_to controller:'questionview',action:'index',gen:params["gnm"],subgen:params["snm"];  	
   end
 
 end
