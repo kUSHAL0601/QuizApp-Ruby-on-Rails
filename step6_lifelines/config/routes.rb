@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'graph/getchart'
+
   get 'leaderboard/bygen'
 
   get 'leaderboard/bysubgen'

@@ -121,6 +121,9 @@ th {
 <h1 style="color:green;"><center>Final score <%= $score %></center></h1>
 <br>
 <br>
+<center>
+<div id="piechart"></div>
+</center>
 <% else %>
 <% $chng=0 %>
 <br>
@@ -213,5 +216,44 @@ function lifeline2()
   }
 }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+var array=[];
+if(document.getElementById('piechart')!=undefined)
+  getchart();
+
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(array);
+
+  var options = {'title':'Your score compared to others', 'width':350, 'height':400,'colors':['green']};
+
+  var chart = new google.visualization.BarChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+function getchart()
+{
+  $.ajax({
+    url:"/graph/getchart",
+    method:"GET",
+    success:function(response)
+    {
+      console.log(response);
+      array=response;
+    },
+    error:function(response)
+    {
+      console.log("error");
+      console.log(response);
+    },
+    complete: function()
+    {
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+    }
+  });
+}
+</script>
+
 </body>
 </html>
