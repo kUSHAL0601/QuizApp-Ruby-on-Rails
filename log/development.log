@@ -33427,3 +33427,34 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 57ms (Views: 55.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users" for 127.0.0.1 at 2017-10-26 00:56:33 -0400
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mState Load (8.1ms)[0m  [1m[34mSELECT states.score,users.name as name,states.userid as id FROM `states` JOIN users ON users.id=states.userid WHERE `states`.`genre` = 'Entertainment' ORDER BY `states`.`score` DESC[0m
+  [1m[36mSubGenre Load (0.4ms)[0m  [1m[34mSELECT  `sub_genres`.* FROM `sub_genres` ORDER BY `sub_genres`.`id` ASC LIMIT 1[0m
+  [1m[36mSubGenre Load (0.4ms)[0m  [1m[34mSELECT  `sub_genres`.* FROM `sub_genres` ORDER BY `sub_genres`.`id` ASC LIMIT 1[0m
+  [1m[36mState Load (0.8ms)[0m  [1m[34mSELECT states.score,users.name as name,states.userid as id FROM `states` JOIN users ON users.id=states.userid WHERE `states`.`subgenre` = 'Books' ORDER BY `states`.`score` DESC[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  `genres`.* FROM `genres` ORDER BY `genres`.`id` ASC LIMIT 1[0m
+  [1m[36mSubGenre Load (0.3ms)[0m  [1m[34mSELECT  `sub_genres`.* FROM `sub_genres` ORDER BY `sub_genres`.`id` ASC LIMIT 1[0m
+  [1m[36mSubGenre Load (0.3ms)[0m  [1m[34mSELECT  `sub_genres`.* FROM `sub_genres` ORDER BY `sub_genres`.`id` ASC LIMIT 1[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 19ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-26 00:56:34 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 1688ms (Views: 1667.7ms | ActiveRecord: 0.0ms)
+
+

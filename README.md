@@ -1,24 +1,35 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BASIC IDEA
+==========
 
-Things you may want to cover:
++ A basic Quiz app made with Ruby on Rails framework
 
-* Ruby version
++ Include custom signup and login
 
-* System dependencies
++ Has two roles user and Admin
 
-* Configuration
++ User created with name Admin is the admin
 
-* Database creation
++ Lifelines alse available.
 
-* Database initialization
+REQUIRMENTS
+===========
 
-* How to run the test suite
+* Ruby version: 2.4.1
 
-* Services (job queues, cache servers, search engines, etc.)
+* Rails version: 5.1.4
 
-* Deployment instructions
+* mysql database system required
 
-* ...
+* A Databse schema named *Quiz* should be present.
+
+RUNNING IT
+==========
+
+* sudo service mysql start
+
+* cd Quiz(folder of cloned repo)
+
+* bundle install
+
+* rails server
